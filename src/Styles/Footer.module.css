@@ -1,0 +1,64 @@
+.footer {
+  background-color: #0e0b0b; 
+  color: #f0f0f0;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footerSection {
+  flex: 1 1 220px;
+  margin: 20px 0;
+}
+
+.footerSection h4,
+.brand {
+  margin-bottom: 12px;
+  color: #00aaff;
+  font-size: 18px;
+}
+
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerSection ul li {
+  margin: 8px 0;
+}
+
+.footerSection a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerSection a:hover {
+  color: #00aaff;
+}
+
+.socialIcons a {
+  display: inline-block;
+  margin-right: 12px;
+  color: #cccccc;
+  font-size: 16px;
+}
+
+.socialIcons a:hover {
+  color: #00aaff;
+}
+
+.footerBottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #999;
+}
