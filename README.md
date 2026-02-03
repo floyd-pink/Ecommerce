@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# E-Commerce Web Application (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce web application built using **React, TypeScript, and Vite**.  
+This project is developed as a **learning-focused project** to understand real-world frontend development, component architecture, and state management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Project Overview(till now)
 
-## React Compiler
+This e-commerce application allows users to:
+- Browse products
+- View product details
+- Add items to a shopping cart
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The goal of this project is to gain hands-on experience with **React, TypeScript, UI design, and scalable frontend structure and keep on developing as I learn new concepts**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend:** React
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **Styling:** Module CSS 
+- **Linting:** ESLint
+- **Version Control:** Git & GitHub
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Product listing page
+- Product detail view
+- Add to cart functionality
+- Remove/update cart items
+- Responsive UI design
+- Fast development with Hot Module Replacement (HMR)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+# Project Structure (Simplified)
+
+src/
+ ├── components/     # Reusable UI components
+ ├── pages/          # Page-level components
+ ├── assets/         # Images and static files
+ ├── App.tsx         # Main app component
+ ├── main.tsx        # Entry point
+
+
+ # Future Inhancements
+ - Managing cart items with bills before checkout
+ - Able to check out
+ - Remove/update cart items
