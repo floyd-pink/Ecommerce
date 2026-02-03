@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Styles/Default.module.css";
 import Footer from "../components/Footer";
-import type { ProductType } from "../data/data";
- 
+
+ import { productbycategories, type ProductType } from "../data/data";
+import CategorySection from "../components/CategorySection";
 interface DefaultProps{
-  results:ProductType[];
+  AddtoCart:(product:ProductType)=> void;
 }
-const Default: React.FC<DefaultProps>= ({results}) => {
+const Default:React.FC<DefaultProps>= ({AddtoCart}) => {
   const [time, setTime] = useState<string>(new Date().toLocaleTimeString());
 
   useEffect(() => {
@@ -23,29 +24,9 @@ const Default: React.FC<DefaultProps>= ({results}) => {
         <h1 className={styles.title}>🛒 Welcome to MyShop</h1>
         <p className={styles.clock}>Current Time: {time}</p>
       </header>
-      
-       <div className={styles.resultsContainer}>
-        {results.length > 0 ? (
-          results.map((product) => (
-            
-            <div key={product.id} className={styles.productCard}>
-              
-              <img src={product.image} alt={product.name} />
-              <h4>{product.name}</h4>
-              <p>{product.brand}</p>
-              <p>${product.price}</p>
-               <p className={styles.categoryLabel}>
-              Category: {product.category}
-            </p>
-            </div>
-          ))
-        ) : (
-          <p>
-            
-          </p>
-        )}
-      </div>
-  
+      {Object.entries(productbycategories).map(([category,products])=>
+    <CategorySection key={category} category={category} products={products} AddtoCart={AddtoCart}/>
+      )}
      {<Footer/>}
       
     </div>
