@@ -18,11 +18,21 @@ const Default:React.FC<DefaultProps>= ({AddtoCart}) => {
     return () => clearInterval(timer);
   }, []);
 
+  const date = new Date().toLocaleDateString( "en-US",
+    { weekday: "long", //object that tells format 
+      year: "numeric", 
+       month: "long",
+       day: "numeric" 
+       });
+
+
+  
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>🛒 Welcome to MyShop</h1>
-        <p className={styles.clock}>Current Time: {time}</p>
+        <p className={styles.clockTime}>Current Time: {time}</p>
+        <p className={styles.clockDate}>Today's Date: {date}</p>
       </header>
       {Object.entries(productbycategories).map(([category,products])=>
     <CategorySection key={category} category={category} products={products} AddtoCart={AddtoCart}/>
