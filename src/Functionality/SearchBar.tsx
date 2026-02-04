@@ -1,43 +1,25 @@
-import React, { useState,ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Search } from 'lucide-react';
 import styles from '../Styles/SearchBar.module.css';
 import { productbycategories,} from '../data/data';
 import type { ProductType } from "../data/data";
 import { useNavigate } from 'react-router-dom';
 
-interface SearchBarProps {
-  setResults :React.Dispatch<React.SetStateAction<ProductType[]>>;
-}
-const SearchBar:React.FC<SearchBarProps> = ({setResults}) => {
+
+const SearchBar = () => {
   const navigate=useNavigate();
   const [search, setSearch] = useState<string>("");
   const [category,setCategory]=useState<string>('all');
   
   const categories=Object.keys(productbycategories);
 const handelSearch = () => {
+   if(search.trim()!=="")
+   {
+    navigate(`/search?q=${encodeURIComponent(search)}&category=${category}`);
+   }
   console.log(`Searching ${search} in ${category}`);
-  let allProducts: ProductType[] = [];
-  Object.values(productbycategories).forEach((products) => {
-    allProducts = allProducts.concat(products);
-  });
 
-  let filteredProducts = allProducts;
-
-  if (category !== 'all') {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.category?.toLowerCase() === category.toLowerCase()
-      
-    );
-  }
-
-  if (search.trim() !== "") {
-    filteredProducts = filteredProducts.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-
-  setResults(filteredProducts);
-  navigate('/');
+ 
 };
 
   

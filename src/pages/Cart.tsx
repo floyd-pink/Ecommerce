@@ -5,9 +5,11 @@ import ProductCard from "../components/ProductCard";
 const CartPage = ({
   cart,
   AddtoCart,
+  onRemove,
 }: {
   cart: ProductType[];
   AddtoCart: (product: ProductType) => void;
+  onRemove: (product: ProductType) => void;
 }) => {
   return (
     <div className={style.CartWrapper}>
@@ -24,7 +26,9 @@ const CartPage = ({
                 product={item}
                 AddtoCart={AddtoCart}
                 classname={style.cardCard}
-                showButton={false} // hide add-to-cart button in cart
+                showButton={false} 
+                showRemove={true}
+                onRemove={onRemove}
               />
             </div>
           ))

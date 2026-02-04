@@ -7,6 +7,7 @@ import { useState } from "react";
 import type { ProductType } from "./data/data";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import SearchProduct from "./pages/SearchProduct";
 
 
 const App = () => {
@@ -21,11 +22,12 @@ const App = () => {
     <>
       <Navbar setResults={setResults} />
           <Routes>
-            <Route path="/" element={<Default results={results} />} />
+            <Route path="/" element={<Default AddtoCart={addtocart} />} />
             <Route path="/products" element={<ProductsPage AddtoCart={addtocart} />} />
             <Route path="/cart" element={<CartPage cart={cart} />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/search" element={<SearchProduct  results={results} />} />
           </Routes>
         
     
