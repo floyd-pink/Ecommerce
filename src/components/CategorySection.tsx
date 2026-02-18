@@ -6,9 +6,9 @@ import ProductCard from './ProductCard';
 interface CategoryProps {
   category: string;
   products: ProductType[];
-  AddtoCart?: (product: ProductType) => void;   // ✅ single product
+  AddtoCart?: (product: ProductType) => void;   
 }
-
+  // to display in deafult by categories 
 const CategorySection: React.FC<CategoryProps> = ({ category, products, AddtoCart }) => {
   return (
     <section className={styles.categorySection}>
@@ -22,6 +22,7 @@ const CategorySection: React.FC<CategoryProps> = ({ category, products, AddtoCar
             product={product}
             AddtoCart={AddtoCart}
             showButton={true}
+            classname={styles.categoryCard}
           />
         ))}
       </div>

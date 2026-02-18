@@ -1,17 +1,19 @@
 import type { ProductType } from "../data/data";
 import styles from "../Styles/ProductCard.module.css";
+import { useCheckout } from "../Context/CheckoutContext";
 
 const ProductCard = ({
   product,
-  AddtoCart,
   showButton = true,
-  classname = ""
+  showRemove = false,
+  classname = "",
 }: {
   product: ProductType;
-  AddtoCart?: (product: ProductType) => void;   // ✅ optional single product
   showButton?: boolean;
+  showRemove?: boolean;
   classname?: string;
 }) => {
+  const { addToCart, removeFromCart } = useCheckout();  
   return (
     <div className={`${styles.card} ${classname}`}>
       <img src={product.image} alt={product.name} className={styles.image} />
@@ -19,9 +21,16 @@ const ProductCard = ({
       <h3>{`Item Category: ${product.category}`}</h3>
       <p>{product.brand}</p>
       <p>${product.price}</p>
-      {showButton && AddtoCart && (
-        <button onClick={() => AddtoCart(product)}>
-          🛒 Add to cart
+
+      {showButton && (
+        <button onClick={() => addToCart(product)}>  
+        AddToCart
+        </button>
+      )}
+
+      {showRemove && (
+        <button onClick={() => removeFromCart(product)}> 
+          Remove from cart
         </button>
       )}
     </div>

@@ -8,28 +8,32 @@ import type { ProductType } from "./data/data";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import SearchProduct from "./pages/SearchProduct";
+import Checkout from "./pages/Checkout";
+import { CheckoutProvider } from "./Context/CheckoutContext";
+import Exit from "./Functionality/Exit";
+
 
 
 const App = () => {
-  const [cart, setCart] = useState<ProductType[]>([]);//to add in cart
-  const [results,setResults]=useState<ProductType[]>([]);
-
-  const addtocart = (product: ProductType) => {
-    setCart((prevArray) => [...prevArray, product]);
-  };
-
+ 
+  
   return (
     <>
-      <Navbar setResults={setResults} />
+    <CheckoutProvider>
+
+        <Navbar  />
           <Routes>
-            <Route path="/" element={<Default AddtoCart={addtocart} />} />
-            <Route path="/products" element={<ProductsPage AddtoCart={addtocart} />} />
-            <Route path="/cart" element={<CartPage cart={cart} />} />
+            <Route path="/" element={<Default />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/search" element={<SearchProduct  results={results} />} />
+            <Route path="/search" element={<SearchProduct   />} />    
+            <Route path="/checkout" element={ <Checkout />} />    
+            <Route path="/bill" element={ <Exit />} />    
           </Routes>
         
+    </CheckoutProvider>
     
     </>
   );

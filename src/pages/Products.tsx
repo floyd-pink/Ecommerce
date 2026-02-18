@@ -3,15 +3,12 @@ import ProductCard from "../components/ProductCard";
 import { useState } from "react";
 import styles from "../Styles/Products.module.css";
 import type { ProductType } from "../data/data";
+import { useCheckout } from "../Context/CheckoutContext";
 
-type ProductsProps = {
-  AddtoCart: (product: ProductType) => void;
-};
-
-const ProductsPage = ({ AddtoCart }: ProductsProps) => {
+const ProductsPage = () => {
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const categories = Object.keys(productbycategories);
-
+  const {addtocart}=useCheckout();
   return (
     <div className={styles.container}>
       {!selectedCat && (
@@ -42,7 +39,7 @@ const ProductsPage = ({ AddtoCart }: ProductsProps) => {
               <ProductCard
                 key={item.id}
                 product={item}
-                AddtoCart={AddtoCart}
+                AddtoCart={addtocart}
               />
             ))}
           </div>

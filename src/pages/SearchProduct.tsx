@@ -3,8 +3,9 @@ import styles from "../Styles/SearchProduct.module.css";
 import Footer from "../components/Footer";
 import type { ProductType } from "../data/data";
 import { productbycategories } from "../data/data";
+import ProductCard from "../components/ProductCard";   // ✅ reuse ProductCard
 
-const SearchProduct: React.FC = () => {
+const SearchProduct = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -42,12 +43,13 @@ const SearchProduct: React.FC = () => {
         <div className={styles.itemsGroup}>
           {filteredResults.length > 0 ? (
             filteredResults.map((item) => (
-              <div className={styles.item} key={item.id}>
-                <img src={item.image} alt={item.name} />
-                <h4>{item.name}</h4>
-                <h4>${item.price}</h4>
-                <h4 className={styles.categoryLabel}>{item.brand}</h4>
-              </div>
+              <ProductCard
+                key={item.id}
+                product={item}
+                showButton={true} 
+                showRemove={false}  
+                classname={styles.item} 
+              />
             ))
           ) : (
             <p>No products found for "{query}" in {category}</p>

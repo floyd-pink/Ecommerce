@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import { Search } from 'lucide-react';
 import styles from '../Styles/SearchBar.module.css';
 import { productbycategories,} from '../data/data';
-import type { ProductType } from "../data/data";
+
 import { useNavigate } from 'react-router-dom';
 
 

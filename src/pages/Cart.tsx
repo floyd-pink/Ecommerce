@@ -1,17 +1,12 @@
-import type { ProductType } from "../data/data";
 import style from '../Styles/AddtoCart.module.css';
 import ProductCard from "../components/ProductCard";
+import { useCheckout } from "../Context/CheckoutContext";
+import ShopNow from '../Functionality/ShopNow';
 
-const CartPage = ({
-  cart,
-  AddtoCart,
-  onRemove,
-}: {
-  cart: ProductType[];
-  AddtoCart: (product: ProductType) => void;
-  onRemove: (product: ProductType) => void;
-}) => {
+const CartPage = () => {
+  const { cart } = useCheckout();  
   return (
+    <>
     <div className={style.CartWrapper}>
       <div className={style.CartHeader}>
         <h2>🛒 Your Cart</h2>
@@ -24,17 +19,23 @@ const CartPage = ({
             <div key={index} className={style.CartItem}>
               <ProductCard
                 product={item}
-                AddtoCart={AddtoCart}
                 classname={style.cardCard}
-                showButton={false} 
-                showRemove={true}
-                onRemove={onRemove}
+                showButton={false}  
+                showRemove={true}    
               />
             </div>
           ))
         )}
       </div>
     </div>
+    <div className={style.Checkout}>
+          {cart.length>0&&(
+            <ShopNow/>
+          )}
+         
+        </div>
+    </>
+    
   );
 };
 

@@ -60,4 +60,5 @@ button:hover,
 button:focus {
   transform: scale(1.05);
   font-style: normal;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

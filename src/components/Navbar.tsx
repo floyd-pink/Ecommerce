@@ -1,13 +1,12 @@
 import { NavLink, useNavigate,useLocation } from "react-router-dom";
 import styles from "../Styles/Navbar.module.css";
 import SearchBar from "../Functionality/SearchBar";
-import type { ProductType } from "../data/data";
 
-interface NavbarProps {
-  setResults :React.Dispatch<React.SetStateAction<ProductType[]>>;
-  
-}
-function Navbar({setResults}:NavbarProps) {
+import { useCheckout } from "../Context/CheckoutContext";
+
+
+function Navbar() {
+  const {cart}=useCheckout();
   const navigate=useNavigate();
   const location=useLocation();
   const showSearchBar=location.pathname==='/'||location.pathname==='/products'|| location.pathname==='/search';
@@ -15,7 +14,7 @@ function Navbar({setResults}:NavbarProps) {
     <nav className={styles.navbar}>
       <h1 className={styles.logo} onClick={() => navigate({ pathname: "/" }, { replace: true })} > Ecommerce </h1>
 
-   {showSearchBar &&<SearchBar setResults={setResults}/>}
+   {showSearchBar &&<SearchBar/>}
       <ul className={styles.navLinks}>
         <li>
           <NavLink
@@ -37,16 +36,20 @@ function Navbar({setResults}:NavbarProps) {
             Products
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              `${styles.navLink} ${isActive ? styles.active : ""}`
-            }
-          >
-            Cart
-          </NavLink>
-         </li>
+       <li>
+  <NavLink
+    to="/cart"
+    className={({ isActive }) =>
+      `${styles.navLink} ${isActive ? styles.active : ""} ${cart.length > 0 ? styles.cartLink : ""}`
+    }
+  >
+    Cart
+    {cart.length > 0 && (
+      <span className={styles.cartBadge}>{cart.length}</span>
+    )}
+  </NavLink>
+</li>
+
         <li>
           <NavLink
             to="/about"

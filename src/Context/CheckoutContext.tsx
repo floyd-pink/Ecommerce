@@ -27,8 +27,8 @@ export const CheckoutProvider = ({ children }: { children: React.ReactNode }) =>
     </CheckoutContext.Provider>
   );
 };
-
-export const useCheckout = () => {
+// if i called context ourside of CheckoutProvider then to prevent form crash 
+export const useCheckout = () => { 
   const context = useContext(CheckoutContext);
   if (!context) throw new Error("useCheckout must be used inside CheckoutProvider");
   return context;

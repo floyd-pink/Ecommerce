@@ -35,3 +35,26 @@ cursor: pointer;
     font-weight: 600; 
     border-bottom: 2px solid #2a6df4;
  }
+.cartLink {
+  position: relative; /* only applied when cart > 0 */
+}
+
+.cartBadge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff9900, #ff6600);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.cartLink:hover .cartBadge {
+  transform: translateX(-50%) scale(1.15);
+  background: linear-gradient(135deg, #ffb84d, #ff6600);
+}
